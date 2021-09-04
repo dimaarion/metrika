@@ -1,0 +1,35 @@
+
+.view{
+    border: solid 4px #fff;
+    background-color: #117a8b;
+    color: #fff;
+    height: 160px;
+    padding-top: 20px;
+   
+}
+.view h3{
+    position: absolute;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    margin-top: 65px;
+   
+
+}
+.view h4{
+    position: absolute; 
+    font-size: 15pt;
+}
+.hostPage{
+    background-color: cornsilk;
+    border: solid 18px #ffffff;
+    color: #117a8b;
+    
+}
+.pageRow{
+    border-bottom: solid 2px #117a8b;
+    font-size: 14pt;
+}
+.nameSite{
+    color: #117a8b;
+}
