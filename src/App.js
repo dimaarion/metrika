@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react'; 
 import { Container, Row, Col } from 'react-bootstrap';
 import { get } from "./action";
 import "./css/bootstrap.css";
@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     get(setDb, "/adminpanel/host/metrika.php");
   }, [])
+
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -37,7 +38,7 @@ function App() {
 
   let metrika = Object.values(db);
   return (
-    <Container>
+    <Container className = "metrika">
       <Col>{metrika.filter((f) => f.name === "nameSite").map((m, i) => m.content.map((x) => <h1 key={x.id + "nameSite"} className = "nameSite">{x.name}</h1>))}</Col>
       <Col className = "pageRow hostPage">
         <Row>

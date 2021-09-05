@@ -20,16 +20,19 @@
     position: absolute; 
     font-size: 15pt;
 }
-.hostPage{
+.hostPage .page{
     background-color: cornsilk;
-    border: solid 18px #ffffff;
+    border: solid 13px #ffffff;
     color: #117a8b;
     
 }
 .pageRow{
     border-bottom: solid 2px #117a8b;
-    font-size: 14pt;
+    font-size: 16pt;
 }
-.nameSite{
+.pageRow h3{
+    font-size: 16pt;
+} 
+.nameSite, .hostPage h4{
     color: #117a8b;
 }
