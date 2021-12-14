@@ -1,9 +1,9 @@
 import axios from "axios";
 let inital_base_url = 'http://adminpanel';
 if (window.location.hostname === "localhost") {
-    inital_base_url = 'http://adminpanel';
+    inital_base_url = 'http://localhost';
 }else{
-   inital_base_url = window.location.protocol + "//" + window.location.hostname; 
+   inital_base_url = window.location.protocol + "//" + window.location.hostname;
    }
 
 export function get(f, url, params = {}) {

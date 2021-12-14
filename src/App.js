@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React,{ useEffect, useState } from 'react'; 
+import React,{ useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { get } from "./action";
 import "./css/bootstrap.css";
@@ -39,13 +39,16 @@ function App() {
   let metrika = Object.values(db);
   return (
     <Container className = "metrika">
+
       <Col>{metrika.filter((f) => f.name === "nameSite").map((m, i) => m.content.map((x) => <h1 key={x.id + "nameSite"} className = "nameSite">{x.name}</h1>))}</Col>
       <Col className = "pageRow hostPage">
+
         <Row>
-          <Col> <h3>{d.getDate() + " " + mounth[d.getMonth()] + " " + d.getUTCFullYear() + "г."}</h3></Col>
+          <Col> <h3>{d.getDate() + " " + mounth[d.getMonth()] + " " + d.getUTCFullYear() + " г."}</h3></Col>
           <Col> <h3>{hour + " : " + min + " : " + sec + ""}</h3></Col>
         </Row>
       </Col>
+
       {metrika.filter((f) => f.name === "host").map((m, i) => <Host key={m.name} metrika={m.content} />)}
       {metrika.filter((f) => f.name === "hostPage").map((m, i) => <HostPage key={m.name} metrika={m.content} />)}
     </Container>
