@@ -30,7 +30,6 @@ export default function HostPage(props) {
                     }
                 } else {
                     if (a.hostViz > b.hostViz) {
-                        console.log("ok");
                         return -1;
                     }
                 }
