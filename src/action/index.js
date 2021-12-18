@@ -1,7 +1,7 @@
 import axios from "axios";
 let inital_base_url = 'http://adminpanel';
 if (window.location.hostname === "localhost") {
-    inital_base_url = 'http://localhost';
+    inital_base_url = 'http://fk-i-s.local';
 }else{
    inital_base_url = window.location.protocol + "//" + window.location.hostname;
    }
