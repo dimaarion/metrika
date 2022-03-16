@@ -1,13 +1,19 @@
 import axios from "axios";
-let inital_base_url = 'http://adminpanel';
+let inital_base_url = "http://adminpanel";
 if (window.location.hostname === "localhost") {
-    inital_base_url = 'http://fk-i-s.local';
-}else{
-   inital_base_url = window.location.protocol + "//" + window.location.hostname;
-   }
+  inital_base_url = "http://fk-i-s.local";
+} else {
+  inital_base_url = window.location.protocol + "//" + window.location.hostname;
+}
 
 export function get(f, url, params = {}) {
-    axios.get(inital_base_url + url, params)
-        .then((rezult) => { f(rezult.data); })
+  axios.get(inital_base_url + url, params).then((rezult) => {
+    f(rezult.data);
+  });
+}
 
+export function getLocal(f, url, params = {}) {
+  axios.get(url, params).then((rezult) => {
+    f(rezult.data);
+  });
 }

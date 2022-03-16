@@ -1,38 +1,37 @@
-
-.view{
-    border: solid 4px #fff;
-    background-color: #117a8b;
-    color: #fff;
-    height: 160px;
-    padding-top: 20px;
-
+body {
+  background-color: #e4eff4;
 }
-.view h3{
-    position: absolute;
-    margin: auto;
-    left: 0px;
-    right: 0px;
-    margin-top: 65px;
-
-
+.view {
+  border: solid 4px #fff;
+  background-color: #117a8b;
+  color: #fff;
+  height: 160px;
+  padding-top: 20px;
 }
-.view h4{
-    position: absolute;
-    font-size: 15pt;
+.view h3 {
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  margin-top: 65px;
 }
-.hostPage .page{
-    background-color: cornsilk;
-    border: solid 13px #ffffff;
-    color: #117a8b;
-
+.view h4 {
+  position: absolute;
+  font-size: 15pt;
 }
-.pageRow{
-    border-bottom: solid 2px #117a8b;
-    font-size: 16pt;
+.hostPage .page {
+  background-color: cornsilk;
+  border: solid 13px #ffffff;
+  color: #117a8b;
 }
-.pageRow h3{
-    font-size: 14pt;
+.pageRow {
+  border-bottom: solid 2px #117a8b;
+  font-size: 16pt;
 }
-.nameSite, .hostPage h4{
-    color: #117a8b;
+.pageRow h3 {
+  font-size: 14pt;
+}
+.nameSite,
+.hostPage h4 {
+  color: #117a8b;
 }
