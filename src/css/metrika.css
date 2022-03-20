@@ -35,3 +35,16 @@ body {
 .hostPage h4 {
   color: #117a8b;
 }
+.boxes {
+  box-shadow: 5px 5px 5px #cccccc;
+  font-size: 14pt;
+}
+.menu {
+  background-color: #ffffff;
+}
+.menu .list {
+  cursor: pointer;
+}
+.menu .list:hover {
+  color: #117a8b;
+}

@@ -5,7 +5,9 @@ export default function Menu(props) {
   return (
     <div className="menu col-1 mt-4 boxes">
       {props.menu.map((x) => (
-        <div key={x.id + x.alias}>{x.name}</div>
+        <div className="list" key={x.id + x.alias}>
+          {x.name}
+        </div>
       ))}
     </div>
   );
