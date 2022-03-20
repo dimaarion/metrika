@@ -4,19 +4,20 @@ import { Container, Row, Col } from "react-bootstrap";
 import { get, getLocal } from "./action";
 import "./css/bootstrap.css";
 import Host from "./Host";
-import HostPage from "./HostPage";
+import Menu from "./Menu";
+import Metrika from "./Metrika";
 function App() {
   let d = new Date();
   const [sec, setSec] = useState(0);
   const [min, setMin] = useState(0);
   const [hour, setHour] = useState(0);
   const [count, setCount] = useState(0);
-  const [db, setDb] = useState([{}]);
+  const [menu, setMenu] = useState([{}]);
   const [host, setHost] = useState([{}]);
   const [hostPage, setHostPage] = useState([{}]);
 
   useEffect(() => {
-    get(setDb, "/adminpanel/host/metrika.php");
+    getLocal(setMenu, "bd/menu.json");
     getLocal(setHost, "host/host.json");
     getLocal(setHostPage, "host/hostPage.json");
   }, []);
@@ -52,49 +53,20 @@ function App() {
     "Декабря"
   ];
 
-  let metrika = Object.values(db);
   return (
-    <Container className="metrika">
-      <Col>
-        {metrika
-          .filter((f) => f.name === "nameSite")
-          .map((m, i) =>
-            m.content.map((x) => (
-              <h1 key={x.id + "nameSite"} className="nameSite">
-                {x.name}
-              </h1>
-            ))
-          )}
-      </Col>
-      <Col className="pageRow hostPage">
-        <Row>
-          <Col>
-            {" "}
-            <h3>
-              {d.getDate() +
-                " " +
-                mounth[d.getMonth()] +
-                " " +
-                d.getUTCFullYear() +
-                " г."}
-            </h3>
-          </Col>
-          <Col>
-            {" "}
-            <h3>{hour + " : " + min + " : " + sec + ""}</h3>
-          </Col>
-        </Row>
-      </Col>
-
-      {host.map((m, i) => (
-        <Host key={m.id + "host"} host={m} />
-      ))}
-      {/*metrika
-        .filter((f) => f.name === "hostPage")
-        .map((m, i) => (
-          <HostPage key={m.name} metrika={m.content} />
-        ))*/}
-    </Container>
+    <div className="container-fluid">
+      <div className="row">
+        <Menu menu={menu} />
+      </div>
+      <Metrika
+        mounth={mounth}
+        d={d}
+        sec={sec}
+        min={min}
+        hour={hour}
+        host={host}
+      />
+    </div>
   );
 }
 
