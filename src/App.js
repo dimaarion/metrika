@@ -57,15 +57,15 @@ function App() {
     <div className="container-fluid">
       <div className="row">
         <Menu menu={menu} />
+        <Metrika
+          mounth={mounth}
+          d={d}
+          sec={sec}
+          min={min}
+          hour={hour}
+          host={host}
+        />
       </div>
-      <Metrika
-        mounth={mounth}
-        d={d}
-        sec={sec}
-        min={min}
-        hour={hour}
-        host={host}
-      />
     </div>
   );
 }

@@ -5,8 +5,7 @@ import "./css/bootstrap.css";
 import Host from "./Host";
 export default function Metrika(props) {
   return (
-    <Container className="metrika">
-      <Col></Col>
+    <Col className="metrika">
       <Col className="pageRow hostPage">
         <Row>
           <Col>
@@ -35,6 +34,6 @@ export default function Metrika(props) {
         .map((m, i) => (
           <HostPage key={m.name} metrika={m.content} />
         ))*/}
-    </Container>
+    </Col>
   );
 }
