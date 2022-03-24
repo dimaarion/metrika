@@ -43,7 +43,11 @@ export default function HostY(props) {
     p5.pop();
   }
 
-  function buttons(p5) {}
+  function buttons(p5, x, y, w, h, xt, yt, text) {
+    p5.textSize(20);
+    p5.rect(x, y, w, h);
+    p5.text(text, xt, yt);
+  }
   useEffect(() => {}, []);
   const setup = (p5, canvasParentRef) => {
     // use parent to render the canvas in this ref
@@ -56,7 +60,7 @@ export default function HostY(props) {
     interval = r / 12;
     p5.background(255);
     yars(p5, interval);
-    buttons(p5);
+    buttons(p5, 5, 5, 55, 50, 15, 35, "Год");
   };
 
   return (
