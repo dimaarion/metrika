@@ -4,6 +4,7 @@ import Sketch from "react-p5";
 import { collidePointRect } from "./action";
 let r;
 let interval = 0;
+let press = 0;
 export default function HostY(props) {
   const [res, setRes] = useState(1000);
   function procent(h, p) {
@@ -44,9 +45,24 @@ export default function HostY(props) {
   }
 
   function buttons(p5, x, y, w, h, xt, yt, text) {
+   
+    p5.push();
     p5.textSize(20);
+    if (collidePointRect(p5.mouseX, p5.mouseY, x, y, w, h)) {
+      p5.fill("#6495ED");
+    }
     p5.rect(x, y, w, h);
+    p5.fill("#FF00FF");
     p5.text(text, xt, yt);
+   
+    if (p5.mouseIsPressed) {
+      if (collidePointRect(p5.mouseX, p5.mouseY, x, y, w, h)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    p5.pop();
   }
   useEffect(() => {}, []);
   const setup = (p5, canvasParentRef) => {
@@ -59,13 +75,19 @@ export default function HostY(props) {
   const draw = (p5) => {
     interval = r / 12;
     p5.background(255);
-    yars(p5, interval);
-    buttons(p5, 5, 5, 55, 50, 15, 35, "Год");
+    if (buttons(p5, 5, 5, 55, 50, 15, 35, "Год")) {
+      yars(p5, interval);
+      p5.rect(100, 100, 100, 100);
+    }
   };
 
+  
+   mousePressed() {
+    press = 1
+    }
   return (
     <div className="hostY">
-      <Sketch setup={setup} draw={draw} />
+      <Sketch setup={setup} p draw={draw} />
     </div>
   );
 }
