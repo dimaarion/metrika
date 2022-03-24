@@ -27,7 +27,7 @@ export default function Metrika(props) {
         </Row>
       </Col>
       <Col>
-        <HostY hostY={props.hostY} />
+        <HostY hostY={props.hostY} mount={props.mount} />
       </Col>
       {/*props.host.map((m, i) => (
         <Host key={m.id + "host"} host={m} />
