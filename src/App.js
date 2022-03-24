@@ -14,12 +14,14 @@ function App() {
   const [count, setCount] = useState(0);
   const [menu, setMenu] = useState([{}]);
   const [host, setHost] = useState([{}]);
+  const [hostY, setHostY] = useState([{}]);
   const [hostPage, setHostPage] = useState([{}]);
 
   useEffect(() => {
     getLocal(setMenu, "bd/menu.json");
     getLocal(setHost, "host/host.json");
     getLocal(setHostPage, "host/hostPage.json");
+    getLocal(setHostY, "host/hostY.json");
   }, []);
 
   useEffect(() => {
@@ -58,6 +60,7 @@ function App() {
       <div className="row">
         <Menu menu={menu} />
         <Metrika
+          hostY = {hostY}
           mounth={mounth}
           d={d}
           sec={sec}
