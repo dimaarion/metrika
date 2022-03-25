@@ -62,6 +62,7 @@ function App() {
       <div className="row">
         <Menu menu={menu} />
         <Metrika
+          hostPage={hostPage}
           mount={mount}
           hostY={hostY}
           mounth={mounth}

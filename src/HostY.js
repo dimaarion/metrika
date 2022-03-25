@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/bootstrap.css";
 import Sketch from "react-p5";
+import "./css/host.css";
 import { collidePointRect } from "./action";
 let r;
 let interval = 0;
@@ -12,10 +13,23 @@ let b;
 let sel;
 export default function HostY(props) {
   const [res, setRes] = useState(1000);
+  const [sel, setSel] = useState("");
   function procent(h, p) {
     return (p / h) * 100;
   }
   let colors = ["#DFFF00", "#FFBF00", "#FF7F50", "#DE3163"];
+
+  function artHost(p5, lin) {
+    p5.push();
+    p5.fill(0);
+    p5.rect(200, 200, 200, 200);
+    lin.map((x, i) => {
+      p5.text(x.name, 5, x.id * 5);
+      p5.rect(200, i * 10, 100, 100);
+    });
+    p5.pop();
+  }
+
   function yars(p5, interval, lin) {
     p5.push();
     lin.map((x) => {
@@ -81,10 +95,6 @@ export default function HostY(props) {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component
     r = p5.select(".hostY").width;
-    sel = p5.createSelect();
-    sel.position(r, 35);
-    sel.option("Сайт", "site");
-    sel.option("Страницы", "art");
 
     p5.createCanvas(r - 20, 500).parent(canvasParentRef);
   };
@@ -93,18 +103,26 @@ export default function HostY(props) {
     interval = r / 12;
     interval2 = r / 31;
     p5.background(255);
-    if (buttons(p5, { press: press, r: 1 }, 5, 5, 55, 50, 15, 35, "Год")) {
-      b = 1;
-    }
-    if (buttons(p5, { press: press2, r: 3 }, 60, 5, 95, 50, 75, 35, "Месяц")) {
-      b = 2;
-    }
-    if (b === 1) {
-      yars(p5, interval, props.hostY);
-    } else if (b === 2) {
-      yars(p5, interval2, props.mount);
+
+    if (sel === "art") {
+      artHost(p5, props.hostPage);
     } else {
-      yars(p5, interval, props.hostY);
+      if (buttons(p5, { press: press, r: 1 }, 5, 5, 55, 50, 15, 35, "Год")) {
+        b = 1;
+        console.log(sel);
+      }
+      if (
+        buttons(p5, { press: press2, r: 3 }, 60, 5, 95, 50, 75, 35, "Месяц")
+      ) {
+        b = 2;
+      }
+      if (b === 1) {
+        yars(p5, interval, props.hostY);
+      } else if (b === 2) {
+        yars(p5, interval2, props.mount);
+      } else {
+        yars(p5, interval, props.hostY);
+      }
     }
   };
 
@@ -115,19 +133,22 @@ export default function HostY(props) {
     my = p5.mouseY;
   };
 
-  function mySelectEvent(p5) {
-    let item = sel.value();
-
-    p5.text("It is a " + item + "!", 500, 500);
-  }
   return (
     <div className="hostY">
-      <Sketch
-        setup={setup}
-        mySelectEvent={mySelectEvent}
-        mousePressed={mousePressed}
-        draw={draw}
-      />
+      <div className="row col">
+        <div className="col"></div>
+        <div className="col-1">
+          <select
+            className="hostSelect form-control mt-1"
+            onChange={(e) => setSel(e.target.value)}
+          >
+            <option value="site">Сайт</option>
+            <option value="art">Страницы</option>
+          </select>
+        </div>
+      </div>
+
+      <Sketch setup={setup} mousePressed={mousePressed} draw={draw} />
     </div>
   );
 }
