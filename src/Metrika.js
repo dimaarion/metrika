@@ -27,11 +27,13 @@ export default function Metrika(props) {
         </Row>
       </Col>
       <Col>
-        <HostY
-          hostY={props.hostY}
-          mount={props.mount}
-          hostPage={props.hostPage}
-        />
+        {
+          <Host
+            hostY={props.hostY}
+            mount={props.mount}
+            hostPage={props.hostPage}
+          />
+        }
       </Col>
       {/*props.host.map((m, i) => (
         <Host key={m.id + "host"} host={m} />

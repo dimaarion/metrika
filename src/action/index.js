@@ -31,3 +31,6 @@ export const collidePointRect = function (pointX, pointY, x, y, xW, yW) {
   }
   return false;
 };
+export function procent(h, p) {
+  return (p / h) * 100;
+}
