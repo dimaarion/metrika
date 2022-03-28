@@ -10,5 +10,12 @@
 }
 .metrika {
   height: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
+}
+.hostGrafikName {
+  background-color: aqua;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  margin-top: -33px;
 }

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { get, getLocal } from "./action";
 import "./css/bootstrap.css";
 import Host from "./Host";
-import HostY from "./HostY";
+import HostPage from "./Host";
 export default function Metrika(props) {
   return (
     <Col className="metrika boxes">
@@ -35,14 +35,6 @@ export default function Metrika(props) {
           />
         }
       </Col>
-      {/*props.host.map((m, i) => (
-        <Host key={m.id + "host"} host={m} />
-      ))*/}
-      {/*metrika
-        .filter((f) => f.name === "hostPage")
-        .map((m, i) => (
-          <HostPage key={m.name} metrika={m.content} />
-        ))*/}
     </Col>
   );
 }
