@@ -1,32 +1,95 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./css/metrika.css";
 import "./css/host.css";
 import { procent } from "./action";
 export default function Host(props) {
-  let h = 500;
+  let h = 300;
   const styles = {
     hostBlock: {
       height: h
     },
     hostYNum: { position: "absolute", marginTop: "-25px", left: 0, right: 0 }
   };
+  const [buttonActive, SetButtonActive] = useState("Y");
+  function hostGrafick(arr) {
+    return arr.map((x) => (
+      <div key={x.name + x.id} className="col-sm p-1">
+        <div
+          className="hostY"
+          style={{
+            height: procent(h, x.host) + "px",
+            marginTop: h - procent(h, x.host) + "px"
+          }}
+        >
+          <div className="text-center" style={styles.hostYNum}>
+            {x.host}
+          </div>
+        </div>
+      </div>
+    ));
+  }
   return (
     <div className="col-sm" style={styles.hostBlock}>
-      <div className="row">
-        {props.hostY.map((x) => (
-          <div
-            className="col-sm hostY"
-            style={{
-              height: procent(h, x.host) + "px",
-              marginTop: h - procent(h, x.host) + "px"
-            }}
-          >
-            <div className="text-center" style={styles.hostYNum}>
-              {x.host}
-            </div>
+      <div className="col-sm buttonHost">
+        {buttonActive}
+        <div className="row">
+          <div className="pr-1">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={(e) => SetButtonActive("M")}
+            >
+              Месяц
+            </button>
           </div>
-        ))}
+          <div className="pr-1">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={(e) => SetButtonActive("Y")}
+            >
+              Год
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        {buttonActive === "Y"
+          ? props.hostY.map((x) => (
+              <div key={x.name + x.id} className="col-sm p-1">
+                <div
+                  className="hostY"
+                  style={{
+                    height: procent(h, x.host) + "px",
+                    marginTop: h - procent(h, x.host) + "px"
+                  }}
+                >
+                  <div className="text-center" style={styles.hostYNum}>
+                    {x.host}
+                  </div>
+                </div>
+              </div>
+            ))
+          : ""}
+        {buttonActive === "M"
+          ? props.mount.map((x) => (
+              <div key={x.name + x.id} className="col-sm p-1">
+                <div
+                  className="hostY"
+                  style={{
+                    height: procent(h, x.host) + "px",
+                    marginTop: h - procent(h, x.host) + "px"
+                  }}
+                >
+                  <div className="text-center" style={styles.hostYNum}>
+                    {x.host}
+                  </div>
+                </div>
+              </div>
+            ))
+          : ""}
       </div>
     </div>
   );
