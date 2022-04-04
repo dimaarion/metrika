@@ -5,6 +5,7 @@ import CaretUp from "./CaretUp.js";
 import "./css/metrika.css";
 export default function HostPage(props) {
   const [sort, setSort] = useState(false);
+  const [sortP, setSortP] = useState([{}]);
   function contents(p, i) {
     return (
       <Col key={p.hostViz + i + "pages"} className="pageRow">
@@ -17,9 +18,25 @@ export default function HostPage(props) {
       </Col>
     );
   }
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setSortP(
+      props.host.sort(function (a, b) {
+        if (sort === false) {
+          if (a.hostViz < b.hostViz) {
+            return -1;
+          }
+        } else {
+          if (a.hostViz < b.hostViz) {
+            return 1;
+          }
+        }
+        return 0;
+      })
+    );
+  }, [sort, props.host]);
   return (
     <Col className="hostPage">
+      {sort + ""}
       <Col>
         <Row>
           <Col className="ml-4">
@@ -39,23 +56,11 @@ export default function HostPage(props) {
       </Col>
 
       <Col className="page">
-        {props.host
-          .sort(function (a, b) {
-            if (sort === false) {
-              if (a.hostViz < b.hostViz) {
-                return -1;
-              }
-            } else {
-              if (a.hostViz > b.hostViz) {
-                return -1;
-              }
-            }
-          })
-          .map(
-            (page, i) => (
-              <div key={page.name + i}>{page.name}</div>
-            ) /*contents(page, i * 10)*/
-          )}
+        {sortP.map(
+          (page, i) => (
+            <div key={page.name + i}>{page.name}</div>
+          ) /*contents(page, i * 10)*/
+        )}
       </Col>
     </Col>
   );
