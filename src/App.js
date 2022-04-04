@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { get, getLocal } from "./action";
 import "./css/bootstrap.css";
-import Host from "./Host";
+import HostPage from "./HostPage";
 import Menu from "./Menu";
 import Metrika from "./Metrika";
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const [host, setHost] = useState([{}]);
   const [hostY, setHostY] = useState([{}]);
   const [mount, setMount] = useState([{}]);
-  const [hostPage, setHostPage] = useState([{}]);
+  const [hostPages, setHostPage] = useState([{}]);
 
   useEffect(() => {
     getLocal(setMenu, "bd/menu.json");
@@ -62,7 +62,7 @@ function App() {
       <div className="row">
         <Menu menu={menu} />
         <Metrika
-          hostPage={hostPage}
+          hostPage={hostPages}
           mount={mount}
           hostY={hostY}
           mounth={mounth}
@@ -72,6 +72,9 @@ function App() {
           hour={hour}
           host={host}
         />
+      </div>
+      <div className = "col-sm">
+        <HostPage host = {hostPages}/>
       </div>
     </div>
   );
