@@ -73,8 +73,8 @@ function App() {
           host={host}
         />
       </div>
-      <div className = "col-sm">
-        <HostPage host = {hostPages}/>
+      <div className="container mt-3">
+        <HostPage host={hostPages} />
       </div>
     </div>
   );

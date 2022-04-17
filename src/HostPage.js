@@ -26,42 +26,59 @@ export default function HostPage(props) {
             return -1;
           }
         } else {
-          if (a.hostViz < b.hostViz) {
+          if (a.hostViz > b.hostViz) {
             return 1;
           }
         }
-        return 0;
       })
     );
-  }, [sort, props.host]);
+  }, [sort, props.host, sortP]);
   return (
-    <Col className="hostPage">
-      {sort + ""}
-      <Col>
-        <Row>
-          <Col className="ml-4">
-            <h4>Название статьи</h4>
-          </Col>
-          <Row
-            style={{ cursor: "pointer" }}
-            onClick={(e) => setSort(sort === false ? true : false)}
-          >
-            <Col>
-              <h4>Просмотры</h4>
+    <div>
+      <div className="boxes">
+        {sort + ""}
+        <Col>
+          <Row>
+            <Col className="ml-4">
+              <h4>Название статьи</h4>
             </Col>
-            <Col>{sort === false ? <CaretUp /> : <CaretDown />}</Col>
+            <Row
+              style={{ cursor: "pointer" }}
+              onClick={(e) => {
+                setSort(sort === false ? true : false);
+                setSortP(
+                  props.host.sort(function (a, b) {
+                    if (sort === false) {
+                      if (a.hostViz < b.hostViz) {
+                        return -1;
+                      }
+                    } else if (sort === true) {
+                      if (a.hostViz < b.hostViz) {
+                        return 1;
+                      }
+                    }
+                  })
+                );
+              }}
+            >
+              <Col>
+                <h4>Просмотры</h4>
+              </Col>
+              <Col>{sort === false ? <CaretUp /> : <CaretDown />}</Col>
+            </Row>
+            <Col className="col-5"></Col>
           </Row>
-          <Col className="col-5"></Col>
-        </Row>
-      </Col>
+        </Col>
 
-      <Col className="page">
-        {sortP.map(
-          (page, i) => (
-            <div key={page.name + i}>{page.name}</div>
-          ) /*contents(page, i * 10)*/
-        )}
-      </Col>
-    </Col>
+        <Col className="page">
+          {sortP.map((page, i) => (
+            <Row key={page.name + i}>
+              <div className="col-sm">{page.name}</div>
+              <div className="col-sm">{page.hostViz}</div>
+            </Row>
+          ))}
+        </Col>
+      </div>
+    </div>
   );
 }
