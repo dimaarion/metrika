@@ -1,0 +1,13 @@
+.menu {
+  background-color: #ffffff;
+}
+.menu .list {
+  cursor: pointer;
+}
+.menu .list:hover {
+  color: #117a8b;
+}
+
+.active {
+  color: #117a8b;
+}

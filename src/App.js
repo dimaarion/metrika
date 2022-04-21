@@ -16,7 +16,7 @@ function App() {
   const [host, setHost] = useState([{}]);
   const [hostY, setHostY] = useState([{}]);
   const [mount, setMount] = useState([{}]);
-  const [page, setPage] = useState("hom");
+  const [page, setPage] = useState("Главная");
   const [hostPages, setHostPage] = useState([{}]);
 
   useEffect(() => {
@@ -61,22 +61,30 @@ function App() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <Menu menu={menu} />
-        <Metrika
-          hostPage={hostPages}
-          mount={mount}
-          hostY={hostY}
-          mounth={mounth}
-          d={d}
-          sec={sec}
-          min={min}
-          hour={hour}
-          host={host}
-        />
+        <Menu menu={menu} setPage={setPage} page={page} />
+        {page === "Главная" ? (
+          <Metrika
+            hostPage={hostPages}
+            mount={mount}
+            hostY={hostY}
+            mounth={mounth}
+            d={d}
+            sec={sec}
+            min={min}
+            hour={hour}
+            host={host}
+          />
+        ) : (
+          <div></div>
+        )}
       </div>
-      <div className="container mt-3">
-        <HostPage host={hostPages} />
-      </div>
+      {page === "Главная" ? (
+        <div className="container mt-3">
+          <HostPage host={hostPages} />
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }
