@@ -16,6 +16,7 @@ function App() {
   const [host, setHost] = useState([{}]);
   const [hostY, setHostY] = useState([{}]);
   const [mount, setMount] = useState([{}]);
+  const [page, setPage] = useState("hom");
   const [hostPages, setHostPage] = useState([{}]);
 
   useEffect(() => {

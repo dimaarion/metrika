@@ -8,6 +8,7 @@ export default function HostPage(props) {
   const [sort, setSort] = useState(false);
   const [sortN, setSortN] = useState(false);
   const [sortM, setSortM] = useState(false);
+  const [sortG, setSortG] = useState(false);
   const [sortP, setSortP] = useState([{}]);
 
   useEffect(() => {
@@ -57,6 +58,21 @@ export default function HostPage(props) {
       })
     );
   }, [sortM, props.host]);
+  useEffect(() => {
+    setSortP(
+      props.host.sort(function (a, b) {
+        if (sortG === false) {
+          if (a.hostVizG < b.hostVizG) {
+            return -1;
+          }
+        } else {
+          if (a.hostVizG > b.hostVizG) {
+            return 1;
+          }
+        }
+      })
+    );
+  }, [sortG, props.host]);
   return (
     <div>
       <div className="boxes">
@@ -142,7 +158,28 @@ export default function HostPage(props) {
             >
               Месяц<Col>{sortM === false ? <CaretUp /> : <CaretDown />}</Col>
             </Col>
-            <Col className="text-center">Год</Col>
+            <Col
+              className="text-center"
+              style={{ cursor: "pointer" }}
+              onClick={(e) => {
+                setSortG(sortG === false ? true : false);
+                setSortP(
+                  props.host.sort(function (a, b) {
+                    if (sortG === false) {
+                      if (a.hostVizG < b.hostVizG) {
+                        return -1;
+                      }
+                    } else if (sortG === true) {
+                      if (a.hostVizG < b.hostVizG) {
+                        return 1;
+                      }
+                    }
+                  })
+                );
+              }}
+            >
+              Год<Col>{sortG === false ? <CaretUp /> : <CaretDown />}</Col>
+            </Col>
           </Row>
         </Col>
 
