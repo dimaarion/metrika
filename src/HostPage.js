@@ -120,25 +120,27 @@ export default function HostPage(props) {
             >
               Неделя <Col>{sortN === false ? <CaretUp /> : <CaretDown />}</Col>
             </Col>
-            <Col className="text-center"
-            style={{ cursor: "pointer" }}
-            onClick={(e) => {
-              setSortM(sortM === false ? true : false);
-              setSortP(
-                props.host.sort(function (a, b) {
-                  if (sortM === false) {
-                    if (a.hostVizM < b.hostVizM) {
-                      return -1;
+            <Col
+              className="text-center"
+              style={{ cursor: "pointer" }}
+              onClick={(e) => {
+                setSortM(sortM === false ? true : false);
+                setSortP(
+                  props.host.sort(function (a, b) {
+                    if (sortM === false) {
+                      if (a.hostVizM < b.hostVizM) {
+                        return -1;
+                      }
+                    } else if (sortM === true) {
+                      if (a.hostVizM < b.hostVizM) {
+                        return 1;
+                      }
                     }
-                  } else if (sortM === true) {
-                    if (a.hostVizM < b.hostVizM) {
-                      return 1;
-                    }
-                  }
-                })
-              );
-            }}
-            >Месяц<Col>{sortM === false ? <CaretUp /> : <CaretDown />}</Col>
+                  })
+                );
+              }}
+            >
+              Месяц<Col>{sortM === false ? <CaretUp /> : <CaretDown />}</Col>
             </Col>
             <Col className="text-center">Год</Col>
           </Row>
