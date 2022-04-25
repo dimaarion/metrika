@@ -203,7 +203,7 @@ export default function HostPage(props) {
       <div className="col-sm boxes pt-3 ">
         <svg width="500" height="300">
           {sortP
-            .filter((f, i) => i < 3)
+            .filter((f, i) => i < 3 && i % 2 === 0)
             .map((x, j) => (
               /* <div
               key={x.name + "grafic"}
