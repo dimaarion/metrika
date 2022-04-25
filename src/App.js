@@ -57,12 +57,18 @@ function App() {
     "Ноября",
     "Декабря"
   ];
-
+  function displayPages(f, p, n) {
+    if (p === n) {
+      return f;
+    } else {
+      return <div></div>;
+    }
+  }
   return (
     <div className="container-fluid">
       <div className="row">
         <Menu menu={menu} setPage={setPage} page={page} />
-        {page === "Главная" ? (
+        {displayPages(
           <Metrika
             hostPage={hostPages}
             mount={mount}
@@ -73,18 +79,12 @@ function App() {
             min={min}
             hour={hour}
             host={host}
-          />
-        ) : (
-          <div></div>
+          />,
+          page,
+          "Главная"
         )}
       </div>
-      {page === "Главная" ? (
-        <div className="container mt-3">
-          <HostPage host={hostPages} />
-        </div>
-      ) : (
-        <div></div>
-      )}
+      {displayPages(<HostPage host={hostPages} />, page, "Главная")}
     </div>
   );
 }
