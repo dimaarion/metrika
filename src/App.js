@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { get, getLocal } from "./action";
+import { getLocal } from "./action";
 import "./css/bootstrap.css";
+import "./css/style.css";
 import HostPage from "./HostPage";
 import Menu from "./Menu";
 import Metrika from "./Metrika";
+import Footer from "./Footer";
 function App() {
   let d = new Date();
   const [sec, setSec] = useState(0);
@@ -66,8 +67,8 @@ function App() {
   }
   return (
     <div className="container-fluid">
+      <Menu menu={menu} setPage={setPage} page={page} />
       <div className="row">
-        <Menu menu={menu} setPage={setPage} page={page} />
         {displayPages(
           <Metrika
             hostPage={hostPages}
@@ -85,6 +86,7 @@ function App() {
         )}
       </div>
       {displayPages(<HostPage host={hostPages} />, page, "Главная")}
+      <Footer />
     </div>
   );
 }

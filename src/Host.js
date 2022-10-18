@@ -6,9 +6,7 @@ import { procent } from "./action";
 export default function Host(props) {
   let h = 300;
   const styles = {
-    hostBlock: {
-      height: h
-    },
+    hostBlock: {},
     hostYNum: { position: "absolute", marginTop: "-25px", left: 0, right: 0 }
   };
   const [buttonActive, SetButtonActive] = useState("Y");

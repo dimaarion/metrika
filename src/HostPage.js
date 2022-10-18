@@ -200,9 +200,9 @@ export default function HostPage(props) {
           </Col>
         </div>
       </div>
-      <div className="col-sm boxes pt-3 ">
+      {/*<div className="col-sm boxes pt-3 ">
         <svg width="500" height="300">
-          {sortP
+          sortP
             .filter((f, i) => i < 3 && i % 2 === 0)
             .map((x, j) => (
               /* <div
@@ -215,7 +215,7 @@ export default function HostPage(props) {
               }}
             >
               {x.name}
-            </div>*/
+            </div>
               <line
                 key={x.name + "grafic"}
                 stroke="red"
@@ -224,9 +224,9 @@ export default function HostPage(props) {
                 x2={j * 100 + 100}
                 y2={procent(300, x.hostVizD)}
               />
-            ))}
+            ))
         </svg>
-      </div>
+            </div>*/}
     </div>
   );
 }

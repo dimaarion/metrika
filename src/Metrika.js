@@ -6,7 +6,7 @@ import Host from "./Host";
 import HostPage from "./Host";
 export default function Metrika(props) {
   return (
-    <Col className="metrika boxes">
+    <Col className="boxes">
       <Col className="pageRow hostPage">
         <Row>
           <Col>
